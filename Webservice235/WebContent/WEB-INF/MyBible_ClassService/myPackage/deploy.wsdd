@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from MyBible_ClassService WSDL service -->
+
+  <service name="MyBible_Class" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://myPackage"/>
+      <parameter name="wsdlServiceElement" value="MyBible_ClassService"/>
+      <parameter name="schemaQualified" value="http://myPackage"/>
+      <parameter name="wsdlServicePort" value="MyBible_Class"/>
+      <parameter name="className" value="myPackage.MyBible_Class"/>
+      <parameter name="wsdlPortType" value="MyBible_Class"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://myPackage" xmlns:retNS="http://myPackage" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="total_BibleBooks" qname="operNS:total_BibleBooks" returnQName="retNS:total_BibleBooksReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://myPackage" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:Old_Testament_Books" type="tns:int"/>
+        <parameter xmlns:pns="http://myPackage" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:New_Testament_Books" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="total_BibleBooks"/>
+
+  </service>
+</deployment>
